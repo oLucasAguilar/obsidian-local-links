@@ -1,41 +1,33 @@
 # Local Links
 
-**Links to files outside the vault open the file, not an empty note.**
+**Link to any file on your computer. Click it, and it opens.**
 
-```md
-[Study](~/Projects/app/tmp/study.html)
-[Report](/home/me/Downloads/report.pdf)
-[Page](file:///home/me/site/index.html#intro)
-file:///home/me/site/index.html
-```
+<picture><source media="(prefers-color-scheme: dark)" srcset="docs/demo-dark.png"><img alt="Clicking [Study](~/notes/study.html) in an Obsidian note opens file:///home/me/notes/study.html in the browser" src="docs/demo-light.png"></picture>
 
-Without the plugin, clicking `[Study](~/...)` makes Obsidian create `~/Projects/app/tmp/` inside your vault and open an empty `study.html` note. With it:
+Out of the box, Obsidian reads `[Study](~/notes/study.html)` as a note in your vault. Clicking it creates an empty `study.html` note, inside a new `~` folder.
 
-- `.html` opens in the browser you choose, as a `file://` URL, `#fragment` kept
-- any other file or folder opens with the system default app
-- a path that does not exist shows a notice and creates nothing
-- works in Live Preview and Reading view
+With Local Links, the file opens:
 
-Desktop only. Linux is the tested platform.
+- HTML in the browser you choose, `#anchors` included
+- PDFs, folders and everything else in their default app
+- `~/path`, `/absolute/path` and `file:///` links
+- a missing file shows a notice, and no note is created
+
+Desktop only. Tested on Linux.
 
 ## Install
 
-Not in the community list yet. Copy `main.js` and `manifest.json` to `<vault>/.obsidian/plugins/local-links/`, then enable **Local Links** in Settings → Community plugins.
+Copy `main.js` and `manifest.json` into `<vault>/.obsidian/plugins/local-links/`, then turn on **Local Links** in Settings → Community plugins.
 
 ## Settings
 
-- **Browser command**, default `brave-browser`. Arguments split on spaces, e.g. `brave-browser --incognito`. Empty: the system default app.
-- **Browser extensions**, default `html, htm`.
+- **Browser command**: `brave-browser` by default. Arguments are fine (`brave-browser --incognito`). Leave it empty to use the system default.
+- **Browser extensions**: `html, htm` by default.
 
-## Paths with spaces
+A path with spaces needs angle brackets, as in any Markdown link: `[a](<~/my notes/a.html>)`.
 
-Markdown ends a link at the first space, so write `[a](<~/my folder/a.html>)` or `~/my%20folder/a.html`.
+## More
 
-## Limits
-
-[docs/limits.md](docs/limits.md). What exists already and why this is a separate plugin: [docs/alternatives.md](docs/alternatives.md).
-
-## Development
-
-- `node test/test.js`: parsing and open rules, plain node
-- `dev/e2e.sh`: clicks real links in a throwaway Obsidian over CDP (needs Node 20+ and `playwright-core` from the npx cache). A window opens for a few seconds; your vault is not touched. The last check turns the plugin off and confirms the empty note comes back, so a passing run is not a test that cannot fail.
+- [Limits](docs/limits.md): what the tests do not cover, and edge cases
+- [Alternatives](docs/alternatives.md): the plugins that come close, and why this one exists
+- Tests: `node test/test.js`, and `dev/e2e.sh`, which clicks real links in a throwaway Obsidian
