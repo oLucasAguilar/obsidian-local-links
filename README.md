@@ -17,7 +17,7 @@ Desktop only. Tested on Linux.
 
 ## Install
 
-Copy `main.js` and `manifest.json` into `<vault>/.obsidian/plugins/local-links/`, then turn on **Local Links** in Settings → Community plugins.
+Add `oLucasAguilar/obsidian-local-links` to [BRAT](https://github.com/TfTHacker/obsidian42-brat), or copy `main.js` and `manifest.json` into `<vault>/.obsidian/plugins/local-links/`. Then turn on **Local Links** in Settings → Community plugins.
 
 ## Settings
 
