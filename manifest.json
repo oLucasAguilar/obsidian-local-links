@@ -1,0 +1,10 @@
+{
+  "id": "local-links",
+  "name": "Local Links",
+  "version": "0.1.0",
+  "minAppVersion": "1.4.0",
+  "description": "Links to files outside the vault (~/path, /absolute/path, file:///) open the file, in the browser of your choice for HTML, instead of creating an empty note.",
+  "author": "Lucas Aguilar",
+  "authorUrl": "https://github.com/oLucasAguilar",
+  "isDesktopOnly": true
+}
